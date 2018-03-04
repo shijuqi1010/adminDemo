@@ -1,0 +1,30 @@
+[
+    {
+        "bookName": "论语",
+        "locate": "001-002"
+    },
+    {
+        "bookName": "乌合之众",
+        "locate": "001-032"
+    },
+    {
+        "bookName": "富爸爸穷爸爸",
+        "locate": "003-002"
+    },
+    {
+        "bookName": "钢铁是怎样炼成的",
+        "locate": "002-002"
+    },
+    {
+        "bookName": "JavaScript权威指南",
+        "locate": "004-001"
+    },
+    {
+        "bookName": "JavaScript高级程序设计",
+        "locate": "004-002"
+    },
+    {
+        "bookName": "JavaScript设计模式",
+        "locate": "004-003"
+    }
+]

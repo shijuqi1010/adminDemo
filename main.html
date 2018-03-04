@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>简易图书管理系统</title>
+    <!-- jQuery -->
+    <script src="lib/jquery-3.1.1.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>图书管理系统</h2>
+        <p><strong>提示:</strong> 非本校学生请到柜台咨询</p>
+        <ul class="nav nav-tabs" style="background:blue">
+            <li><a onclick="showModule('area1');">图书馆首页</a></li>
+            <li><a onclick="showModule('area2');">我要续借</a></li>
+            <li><a onclick="showModule('area3');">超期查询</a></li>
+            <li class="active"><a onclick="showModule('area4');">管理</a></li>
+        </ul>
+
+        <div class="container-fluid all">
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <div class="panel-group navbar-left">
+                        <div class="panel panel-default" id="area1">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">图书馆首页</a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <a href="javascript:showContent('first/introduce.html')">图书馆介绍</a>
+                                </div>
+                                <div class="panel-body">
+                                    <a href="javascript:showContent('first/resource.html')">本馆资源</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" id="area2">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">我要续借</a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    待还书籍
+                                </div>
+                                <div class="panel-body">
+                                    续借书籍
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" id="area3">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">超期查询</a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    超期图书
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" id="area4">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapsefour">管理</a>
+                                </h4>
+                            </div>
+                            <div id="collapsefour" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <a href="javascript:showContent('book/bookManage.html')">书籍管理</a>
+                                </div>
+                                <div class="panel-body">
+                                    <a href="javascript:showContent('vip/vipManage.html')">会员管理</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </aside>
+
+            <div id="content" style="margin-left: 100px;">
+
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+
+</html>

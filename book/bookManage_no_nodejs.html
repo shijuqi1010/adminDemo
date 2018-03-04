@@ -1,0 +1,123 @@
+<div id="box">
+    <form role="form">
+        <div class="form-group">
+            <!-- <label for="name">书籍管理：</lable> -->
+            <input type="text" id="name" class="text-center" placeholder="按书名查找..." v-model="name">
+            <input type="button" value="查找" class="btn btn-primary" v-on:click="find()">
+        </div>
+    </form>
+    <hr>
+    
+    <p class="h3 text-info text-center">书籍管理</p>
+    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add-dialog">新增</button>
+    <table class="table table-bordered">
+        <!-- <caption class="h3 text-info text-center">书籍管理</caption> -->
+        <tr>
+            <th class="text-center">
+                选择
+                <input type="checkbox" id="allAndNotAll" />全选/反选<br><br>
+                <input type="button" id="getAllSelectedId" value="获取被选中的id" /><br>
+            </th>
+            <th class="text-center">序号</th>
+            <th class="text-center">书名</th>
+            <th class="text-center">所在书架</th>
+            <th class="text-center">操作</th>
+        </tr>
+        <tr class="text-center" v-for="(item, index) in mydata">
+            <td><input type="checkbox" name="items" @click="selectId(id);"></td>
+            <td>{{index+1}}</td>
+            <!-- <td>{{item.id}}</td> -->
+            <td>{{item.name}}</td>
+            <td>{{item.locate}}</td>
+            <td>
+                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modifiy-dialog" v-on:click='tempItem={id:item.id, name:item.name, locate:item.locate}; curItem=item;'>修改</button>
+                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#look-dialog">查看</button>
+                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#layer" v-on:click='nowIndex=index; id=item.id'>删除</button>
+            </td>
+        </tr>
+        <tr v-show="mydata.length!=0">
+            <td colspan="5" class="text-center">
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#layer" v-on:click="nowIndex=-1">删除选中项</button>
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#layer" v-on:click="nowIndex=-2">全部删除</button>
+            </td>
+        </tr>
+        <tr v-show="mydata.length==0">
+            <td colspan="5" class="text-center text-muted">
+                暂无书籍...
+            </td>
+        </tr>
+    </table>
+    <!--新增 弹出框-->
+    <div role="dialog" class="modal" id="add-dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"> 
+                        <span>&times;</span>
+                    </button>
+                    书名：<input type="text" id="name" class="text-center" placeholder="请输入书名" v-model="name">
+                    所在书架：<input type="text" id="locate" class="text-center" placeholder="请输入所在书架" v-model="locate">
+                </div>
+                <div class="modal-body text-right">
+                    <button data-dismiss="modal" class="btn btn-primary btn-sm ">取消</button>
+                    <button data-dismiss="modal" class="btn btn-danger btn-sm" v-on:click='add()'>确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改 弹出框-->
+     <div role="dialog" class="modal" id="modifiy-dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"> 
+                        <span>&times;</span>
+                    </button>
+                    书名：<input type="text" id="name" class="text-center" placeholder="请输入书名" v-model="tempItem.name">
+                    所在书架：<input type="text" id="locate" class="text-center" placeholder="请输入所在书架" v-model="tempItem.locate">
+                </div>
+                <div class="modal-body text-right">
+                    <button data-dismiss="modal" class="btn btn-primary btn-sm ">取消</button>
+                    <button data-dismiss="modal" class="btn btn-danger btn-sm" v-on:click='modify()'>确认</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!--查看 弹出框-->
+    <div role="dialog" class="modal" id="look-dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"> 
+                        <span>&times;</span>
+                    </button>
+                    <p>该书的简介...</p>
+                </div>
+                <div class="modal-body text-right">
+                    <button data-dismiss="modal" class="btn btn-primary btn-sm ">退出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--删除 模态框 弹出框-->
+    <div role="dialog" class="modal" id="layer">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"> 
+                        <span>&times;</span>
+                        </button>
+                    <h4 v-show="nowIndex >= 0" class="modal-title">确认删除么？</h4>
+                    <h4 v-show="nowIndex == -1" class="modal-title">确认删除选中项么？</h4>
+                    <h4 v-show="nowIndex == -2" class="modal-title">确认全部删除么？</h4>
+                </div>
+                <div class="modal-body text-right">
+                    <button data-dismiss="modal" class="btn btn-primary btn-sm ">取消</button>
+                    <button data-dismiss="modal" class="btn btn-danger btn-sm" v-on:click="del(nowIndex, id)">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/bookManage.js"></script>

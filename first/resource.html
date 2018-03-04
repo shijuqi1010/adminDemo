@@ -1,0 +1,25 @@
+<div id="box">
+    <form role="form">
+        <div class="form-group">
+            <input type="text" id="name" class="text-center" placeholder="按书名查找..." v-model="name">
+            <input type="button" value="查找" class="btn btn-primary" v-on:click="find()">
+        </div>
+    </form>
+    <hr>
+    
+    <p class="h3 text-info text-center">本馆书籍</p>
+    <table class="table table-bordered">
+        <tr>
+            <th class="text-center">序号</th>
+            <th class="text-center">书名</th>
+            <th class="text-center">所在书架</th>
+        </tr>
+        <tr class="text-center" v-for="(item, index) in mydata">
+            <td>{{index+1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.locate}}</td>
+        </tr>
+    </table>
+</div>
+
+<script src="js/bookManage.js"></script>

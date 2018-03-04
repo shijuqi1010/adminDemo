@@ -1,0 +1,82 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="lib/bootstrap-table.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="lib/bootstrap-table.min.js"></script>
+<script src="js/manageVip.js"></script>
+
+<div id="box">
+    <form role="form">
+        <div class="form-group">
+            <input type="text" id="name" class="text-center" placeholder="按姓名查找..." v-model="name">
+            <input type="button" value="查找" class="btn btn-primary" v-on:click="find()">
+        </div>
+    </form>
+    <hr>
+    
+    <p class="h3 text-info text-center">会员管理</p>
+   
+    <div class="table-responsive">
+        <div id="#toolbar">
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add-dialog">新增</button>
+            <button class="btn btn-primary btn-sm" data-toggle="modal" onclick='refresh()'>刷新</button> 
+        </div>
+        <table id="dataGrid" class="table table-hover">
+
+        </table>
+    </div>
+
+    <!--新增 弹出框-->
+    <div role="dialog" class="modal" id="add-dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"> 
+                        <span>&times;</span>
+                    </button>
+                    姓名：<input type="text" id="name" class="text-center" placeholder="请输入姓名" v-model="name">
+                    班级：<input type="text" id="class" class="text-center" placeholder="请输入班级" v-model="class">
+                </div>
+                <div class="modal-body text-right">
+                    <button data-dismiss="modal" class="btn btn-primary btn-sm ">取消</button>
+                    <button data-dismiss="modal" class="btn btn-danger btn-sm" v-on:click='add()'>确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改 弹出框-->
+     <div role="dialog" class="modal" id="modifiy-dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"> 
+                        <span>&times;</span>
+                    </button>
+                    姓名：<input type="text" id="name" class="text-center" placeholder="请输入姓名" v-model="tempItem.name">
+                    班级：<input type="text" id="class" class="text-center" placeholder="请输入班级" v-model="tempItem.class">
+                </div>
+                <div class="modal-body text-right">
+                    <button data-dismiss="modal" class="btn btn-primary btn-sm ">取消</button>
+                    <button data-dismiss="modal" class="btn btn-danger btn-sm" v-on:click='modify()'>确认</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!--删除 模态框 弹出框-->
+    <div role="dialog" class="modal" id="layer">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"> 
+                        <span>&times;</span>
+                        </button>
+                    <h4 v-show="nowIndex >= 0" class="modal-title">确认删除么？</h4>
+                    <h4 v-show="nowIndex == -1" class="modal-title">确认删除选中项么？</h4>
+                </div>
+                <div class="modal-body text-right">
+                    <button data-dismiss="modal" class="btn btn-primary btn-sm ">取消</button>
+                    <button data-dismiss="modal" class="btn btn-danger btn-sm" v-on:click="del(nowIndex, id)">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

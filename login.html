@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>图书管登录</title>
+	 <script src="lib/jquery-3.1.1.js"></script>
+     <link rel="stylesheet" href="lib/bootstrap.min.css">
+     <script src="lib/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="text-center center-block">
+    <form role="form" class="form-inline">
+        <div>
+            <label for="name">用户名：</lable>
+            <input type="text" id="name" class="form-control" placeholder="请输入姓名">
+        </div>
+        
+        <div>
+            <label for="password">密 码：</lable>
+            <input type="password" id="password" class="form-control" placeholder="...">
+        </div>
+        <div>
+             <input type="button" value="登录" class="btn btn-primary" onclick="login()"> 
+             <!-- <a href="javascript:login('vip/vipManage.html')">登录</a> -->
+            <input type="reset" value="重置" class="btn btn-danger">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
+<script src="js/login.js"></script>
