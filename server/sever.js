@@ -43,10 +43,16 @@ app.post('/books', function (req, res) {
       console.log('[INSERT ERROR] - ', err.message);
       return;
     }
+    sleep(5000);
     console.log('INSERT ID:', result);
     res.end();
   });
 });
+
+function sleep(milliSeconds) {
+    var startTime = new Date().getTime();
+    while (new Date().getTime() < startTime + milliSeconds);
+};
 
 //删除
 app.delete('/books', function (req, res) {
@@ -184,6 +190,29 @@ app.post('/login', function (req, res) {
     } else {
       res.end('ERROR');
     }
+  });
+});
+
+//注册
+// bodyParser.json解析json数据格式的
+app.use(bodyParser.json());
+
+app.post('/regist', function (req, res) {
+  var params = req.body;
+
+  console.log("注册数据是：");
+  console.log(params);
+
+  var addSql = 'INSERT INTO vipTable(name,password) VALUES(?, ?)';
+  var addParams = [params.name, params.password];
+  /// 将数据新增到数据库
+  connection.query(addSql, addParams, function (err, result) {
+    if (err) {
+      console.log('[INSERT ERROR] - ', err.message);
+      return;
+    }
+    console.log('INSERT ID:', result);
+    res.end();
   });
 })
 
