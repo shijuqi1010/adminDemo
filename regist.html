@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>注册</title>
+    <script src="lib/jquery-3.1.1.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <script src="lib/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/regist.css">
+</head>
+
+<body>
+<div class="text-center center-block">
+    <form role="form" class="form-inline">
+        <p>
+            <label for="name">姓名：
+                <input type="text" id="name" class="form-control" placeholder="请输入姓名">
+            </label>
+        </p>
+        <p>
+            <label for="password">密 码：</label>
+            <input type="password" id="password" class="form-control" placeholder="...">
+        </p>
+        <p>性别：
+            <input type="radio" name="sex" value="男" class="form-control">男
+            <input type="radio" name="sex" value="女" class="form-control">女
+            <input type="radio" name="sex" value="保密" checked="checked" class="form-control">保密
+        </p>
+        <p>
+            爱好：
+            <input type="checkbox" name="hobit" value="篮球">篮球
+            <input type="checkbox" name="hobit" value="足球">足球
+            <input type="checkbox" name="hobit" value="羽毛球" checked="checked">羽毛球
+            <input type="checkbox" name="hobit" value="乒乓球">乒乓球
+        </p>
+        <p>
+            <label for="birthday">生日：</label>
+            <input type="date" id="birthday" value="生日" name="birthday">
+        </p>
+        <p>
+            <label for="phone">电话：</label>
+            <input type="number" id="phone" name="phone" value="电话">
+        </p>
+        <p>
+            <label for="email">邮箱：</label>
+            <input type="email" id="email" name="email">
+        </p>
+        <p>
+            <label for="locate">地址：</label>
+            <select name="locate" id="locate">
+                <optgroup label="北京市">
+                    <option value="朝阳区" selected="selected">朝阳区</option>
+                    <option value="主城区">主城区</option>
+                    <option value="中关村">中关村</option>
+                </optgroup>
+                <optgroup label="广州市">
+                    <option value="天河区">天河区</option>
+                    <option value="越秀区">越秀区</option>
+                    <option value="海珠区">海珠区</option>
+                </optgroup>
+            </select>
+        </p>
+        <p>
+            <label for="introduce">简介：</label>
+            <textarea name="introduce" id="introduce" cols="30" rows="10" name="intr"></textarea>
+        </p>
+        <p>
+            <input type="button" value="注册" class="btn btn-primary" onclick="regist()">
+            <input type="reset" value="重置" class="btn btn-danger">
+        </p>
+    </form>
+</div>
+</body>
+</html>
+<script src="js/regist.js"></script>
