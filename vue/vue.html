@@ -1,0 +1,24 @@
+<div id="app">
+    <form>
+        title:<input type="text" v-model="title"> <br>
+        desc:<input type="text" v-model="desc"> <br/>
+        <input type="button" value="add todo item" v-on:click="addItem()" />
+    </form>
+</div>
+
+<div>
+    <input type="button" value="提示框" class="btn btn-primary" onclick="notice()">
+</div>
+
+<div>
+    <ul>
+        <li><a>图书馆首页</a></li>
+        <li><a>我要续借</a></li>
+        <li><a>超期查询</a></li>
+        <li><a>管理</a></li>
+        <li><a>vue实例</a></li>
+    </ul>
+</div>
+
+<script src="js/vue.js"></script>
+
